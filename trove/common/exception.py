@@ -293,3 +293,11 @@ class BackupFileNotFound(NotFound):
 class SwiftAuthError(TroveError):
 
     message = _("Swift account not accessible for tenant %(tenant_id)s.")
+
+
+class ClusterTypeError(TroveError):
+    message = _("Could not access cluster type")
+
+
+class ClusterTypeNotFound(NotFound):
+    message = _("ClusterType not found")
