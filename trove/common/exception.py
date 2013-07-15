@@ -311,3 +311,11 @@ class DatabaseInitialUserDuplicateError(TroveError):
     message = _("Two or more users share the same name and host in the "
                 "initial users list. Please correct the names or remove the "
                 "duplicate entries.")
+
+
+class ClusterTypeError(TroveError):
+    message = _("Could not access cluster type")
+
+
+class ClusterTypeNotFound(NotFound):
+    message = _("ClusterType not found")
