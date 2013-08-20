@@ -55,6 +55,10 @@ def map(engine, models):
                      autoload=True))
     orm.mapper(models['clustertype'],
                Table('clustertypes', meta, autoload=True))
+    orm.mapper(models['cluster'], Table('clusters', meta, autoload=True))
+    orm.mapper(
+        models['cluster_instance'],
+        Table('cluster_instances', meta, autoload=True))
 
 
 def mapping_exists(model):
