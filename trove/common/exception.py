@@ -285,3 +285,27 @@ class BackupFileNotFound(NotFound):
 class SwiftAuthError(TroveError):
 
     message = _("Swift account not accessible for tenant %(tenant_id)s.")
+
+
+class ClusterNotFound(NotFound):
+    message = _('Cluster not found: %(cluster_id)s.')
+
+
+class ClusterError(TroveError):
+    message = _('Problem with cluster: %(cluster_id)s.')
+
+
+class ClusterModelError(TroveError):
+    message = _('Error creating cluster model object.')
+
+
+class DBClusterModelError(TroveError):
+    message = _('Problem in cluster model')
+
+
+class ClusterInstanceNotFound(NotFound):
+    message = _('ClusterInstance not found: %(clusterinstance_id)s')
+
+
+class ClusterInstanceModelError(TroveError):
+    message = _('Error creating clusterinstance model object')
