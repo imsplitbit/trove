@@ -401,3 +401,15 @@ class ConfigurationDatastoreNotMatchInstance(TroveError):
 class ConfigurationParameterDeleted(object):
     message = _("%(parameter_name)s parameter can no longer be "
                 " set as of %(parameter_deleted_at)s")
+
+
+class MetadataCreationError(TroveError):
+    message = _('Failed to create metadata entry for instance')
+
+
+class MetadataTypeError(TroveError):
+    message = _('Metadata root must be a dict, got type %(metatype)s')
+
+
+class MetadataLookupError(NotFound):
+    message = _('Failed to lookup metadata from the database')

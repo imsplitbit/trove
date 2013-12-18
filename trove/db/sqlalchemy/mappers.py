@@ -52,13 +52,15 @@ def map(engine, models):
                Table('security_group_rules', meta, autoload=True))
     orm.mapper(models['security_group_instance_association'],
                Table('security_group_instance_associations', meta,
-                     autoload=True))
+                     autoload=True)),
     orm.mapper(models['configurations'],
                Table('configurations', meta, autoload=True))
     orm.mapper(models['configuration_parameters'],
                Table('configuration_parameters', meta, autoload=True))
     orm.mapper(models['conductor_lastseen'],
-               Table('conductor_lastseen', meta, autoload=True))
+               Table('conductor_lastseen', meta, autoload=True)),
+    orm.mapper(models['instance_metadata'],
+               Table('instance_metadata', meta, autoload=True))
 
 
 def mapping_exists(model):
