@@ -23,6 +23,7 @@ from trove.limits.service import LimitsController
 from trove.backup.service import BackupController
 from trove.versions import VersionsController
 from trove.datastore.service import DatastoreController
+from trove.topology.service import TopologyController
 
 
 class API(wsgi.Router):
@@ -37,6 +38,7 @@ class API(wsgi.Router):
         self._limits_router(mapper)
         self._backups_router(mapper)
         self._configurations_router(mapper)
+        self._topology_router(mapper)
 
     def _versions_router(self, mapper):
         versions_resource = VersionsController().create_resource()
@@ -134,6 +136,30 @@ class API(wsgi.Router):
                        controller=backups_resource,
                        action="delete",
                        conditions={'method': ['DELETE']})
+
+    def _topology_router(self, mapper):
+        topology_resource = TopologyController().create_resource()
+        mapper.connect('/{tenant_id}/instances/{instance_id}/topology',
+                       controller=topology_resource,
+                       action='list',
+                       conditions={'method': ['GET']})
+        path = '/{tenant_id}/instances/{instance_id}/topology/{datastore}'
+        mapper.connect(path,
+                       controller=topology_resource,
+                       action='show',
+                       conditions={'method': ['GET']})
+        mapper.connect(path,
+                       controller=topology_resource,
+                       action='create',
+                       conditions={'method': ['POST']})
+        mapper.connect(path,
+                       controller=topology_resource,
+                       action='delete',
+                       conditions={'method': ['DELETE']})
+        mapper.connect(path,
+                       controller=topology_resource,
+                       action='edit',
+                       conditions={'method': ['PATCH']})
 
     def _configurations_router(self, mapper):
         parameters_resource = ParametersController().create_resource()

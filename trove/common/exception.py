@@ -401,3 +401,11 @@ class ConfigurationDatastoreNotMatchInstance(TroveError):
 class ConfigurationParameterDeleted(object):
     message = _("%(parameter_name)s parameter can no longer be "
                 " set as of %(parameter_deleted_at)s")
+
+
+class TopologyNotFound(NotFound):
+    message = _("Topology %(topology_id)s not found in the database")
+
+
+class TopologyModelError(TroveError):
+    message = _("Error instantiating model %(model_name)s")
